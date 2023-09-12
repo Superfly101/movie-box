@@ -4,17 +4,13 @@ import tomatoIcon from "../icons/tomato.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative">
-      <div>
-        <Image
-          src="https://image.tmdb.org/t/p/original/ctMserH8g2SeOAnCw5gFjdQF8mo.jpg"
-          alt="Barbie poster"
-          width={985}
-          height={554}
-          className="w-full"
-        />
-      </div>
-      <article className="absolute top-1/3 px-20 text-white max-w-[32rem]">
+    <section
+      className="min-h-[calc(100vh-40px)] bg-cover flex items-center px-4 md:px-12 lg:px-16"
+      style={{
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/ctMserH8g2SeOAnCw5gFjdQF8mo.jpg")`,
+      }}
+    >
+      <article className=" text-white max-w-[20rem]">
         <h2 className="font-bold text-4xl">John Wick 3: Parabellum</h2>
         <div className="py-4">
           <div className="flex gap-4 my-2">

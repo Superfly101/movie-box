@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .movie-list {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    padding-block: 1rem;
+  }
+}
