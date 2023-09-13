@@ -7,8 +7,6 @@ import { useEffect, useState } from "react";
 import { Movie, URL } from "../constant";
 import Spinner from "./Spinner";
 
-type Output = "results";
-
 const TopRatedMovies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errror, setError] = useState("");
