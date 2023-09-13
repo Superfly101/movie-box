@@ -46,7 +46,7 @@ const MainHeader = () => {
         </div>
       </nav>
       <nav
-        className={`px-2 flex flex-col gap-2 backdrop-blur-sm bg-white/30 overflow-hidden duration-500 ${
+        className={`px-2 flex flex-col gap-2 backdrop-blur-sm bg-white/30 overflow-hidden duration-300 ${
           isActive ? "h-[90px]" : "h-0"
         }`}
       >
