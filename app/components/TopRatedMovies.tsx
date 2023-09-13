@@ -5,28 +5,34 @@ import MovieCard from "./MovieCard";
 import rightIcon from "../icons/rightIcon.svg";
 import { useEffect, useState } from "react";
 import { Movie, URL } from "../constant";
+import Spinner from "./Spinner";
 
 type Output = "results";
 
 const TopRatedMovies = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [errror, setError] = useState("");
   const [topRatedMovies, setTopRateMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     const getTopRatedMovies = async () => {
+      setIsLoading(true);
+
       const res = await fetch(
         `${URL}/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
       );
 
-      const data: Record<Output, Movie[]> = await res.json();
+      const data = await res.json();
 
       if (!res.ok) {
-        console.log(data);
+        console.log(data.status_message);
+        setError(data.status_message);
+        setIsLoading(false);
         return;
       }
 
-      console.log(data.results.slice(0, 10));
       setTopRateMovies(data.results.slice(0, 10));
+      setIsLoading(false);
     };
 
     getTopRatedMovies();
@@ -40,11 +46,15 @@ const TopRatedMovies = () => {
           <Image src={rightIcon} alt="Right icon" />
         </div>
       </div>
-      <ul className="movie-list">
-        {topRatedMovies.map((movie, index) => (
-          <MovieCard key={movie.id.toString()} {...movie} />
-        ))}
-      </ul>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ul className="movie-list">
+          {topRatedMovies.map((movie, index) => (
+            <MovieCard key={movie.id.toString()} {...movie} />
+          ))}
+        </ul>
+      )}
     </section>
   );
 };
