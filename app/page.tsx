@@ -5,7 +5,7 @@ import TopRatedMovies from "./components/TopRatedMovies";
 export default function Home() {
   return (
     <>
-      <MainHeader />
+      {/* <MainHeader /> */}
       <main>
         <HeroSection />
         <TopRatedMovies />
