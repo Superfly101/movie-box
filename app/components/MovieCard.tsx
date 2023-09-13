@@ -11,7 +11,7 @@ const MovieCard = () => {
           height={700}
         />
       </div>
-      <div className="py-2">
+      <div className="py-2 flex flex-col gap-2 mt-2">
         <h4 className="font-bold">Spider-Man : Into The Spider Verse</h4>
         <p className="text-sm">Release on: 2023-07-19</p>
       </div>
