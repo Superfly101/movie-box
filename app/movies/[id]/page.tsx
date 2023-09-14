@@ -1,30 +1,75 @@
-import { URL, imageUrl } from "@/app/constant";
+import { Movie, URL, imageUrl } from "@/app/constant";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-export default async function Page({ params }: { params: { id: string } }) {
+async function getData(id: string) {
   const res = await fetch(
-    `${URL}/${params.id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+    `${URL}/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
   );
 
-  const data = await res.json();
-
   if (!res.ok) {
-    console.log(data);
+    console.log(res);
     notFound();
   }
 
+  return res.json();
+}
+
+export default async function Page({ params }: { params: { id: string } }) {
+  const data: Movie = await getData(params.id);
+
+  const hours = Math.floor(data.runtime / 60);
+  const minutes = data.runtime % 60;
+  const runtime = `${hours}hr ${minutes}m`;
+
   return (
-    <section className="px-8 py-8">
-      <div className="overflow-hidden rounded-lg">
+    <section className={`px-8 py-8`}>
+      <div className="overflow-hidden rounded-lg max-w-[40rem]">
         <Image
-          src={`${imageUrl}/${data.poster_path}`}
-          alt={data.title}
+          src={`${imageUrl}/${data.backdrop_path}`}
+          alt={data.original_title}
           width={1200}
           height={700}
           className="w-full"
         />
       </div>
+      <article className="flex py-4 flex-col gap-2">
+        <div className="flex items-justify gap-4">
+          <h2 className="text-xl">
+            {data.original_title} &#183; {data.release_date.slice(0, 4)} &#183;{" "}
+            {runtime}
+          </h2>
+          <ul className="flex gap-2 items-center">
+            {data.genres.map((genre) => (
+              <li
+                key={`${genre.id}`}
+                className="border border-[#F8E7EB] rounded-full py-1 px-2 text-sm font-[500] text-rose"
+              >
+                {genre.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p>{data.overview}</p>
+        <p>
+          Director:{" "}
+          <span className="text-rose cursor-pointer hover:underline">
+            Joseph Konsinski
+          </span>
+        </p>
+        <p>
+          Writers:{" "}
+          <span className="text-rose cursor-pointer hover:underline">
+            Jim Cash, Jack Epps Jr, Peter Craig
+          </span>
+        </p>
+        <p>
+          Stars :{" "}
+          <span className="text-rose cursor-pointer hover:underline">
+            Tom Cruise, Jennifer Connelly, Miles Teller
+          </span>
+        </p>
+      </article>
     </section>
   );
 }
