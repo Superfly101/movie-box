@@ -3,7 +3,6 @@ import IMDbLogo from "../icons/IMDb.png";
 import tomatoIcon from "../icons/tomato.png";
 import playIcon from "../icons/play-icon.png";
 import { Movie, URL, imageUrl } from "../constant";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 async function getData() {
