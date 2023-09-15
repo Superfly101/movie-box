@@ -1,4 +1,9 @@
-const Spinner = () => {
+type Props = {
+  text?: string;
+};
+
+const Spinner = ({ text }: Props) => {
+  const output = text || "Loading...";
   return (
     <div className="min-h-[15rem] flex flex-col bg-white border shadow-sm rounded-xl">
       <div className="flex flex-auto flex-col justify-center items-center p-4 md:p-5">
@@ -10,7 +15,7 @@ const Spinner = () => {
           >
             <span className="sr-only">Loading...</span>
           </div>
-          <p className="ml-4 font-[500]"> Loading movies</p>
+          <p className="ml-4 font-[500]">{output}</p>
         </div>
       </div>
     </div>

@@ -19,31 +19,31 @@ export default function MovieLayout({
 }) {
   return (
     <section className={`flex ${poppins.className}`}>
-      <nav className="py-12 pl-4 min-h-screen w-[20rem] border border-[#0000004D] rounded-tr-[3rem] rounded-br-[3rem]">
+      <nav className="py-12 pl-4 min-h-screen min-w-[12rem] border border-[#0000004D] rounded-tr-[3rem] rounded-br-[3rem] text-sm">
         <div className="flex gap-4 items-center">
           <Image src={logo} alt="Movie box logo" />
-          <p className="font-bold">MovieBox</p>
+          <p className="font-bold text-lg">MovieBox</p>
         </div>
-        <ul className="flex flex-col pt-16 gap-4">
-          <li className="flex gap-2 pl-6 py-5">
+        <ul className="flex flex-col pt-8 gap-4">
+          <li className="flex gap-2 pl-6 py-5 items-center">
             <Image src={homeIcon} alt="home icon" />
-            Home
+            <p>Home</p>
           </li>
-          <li className="flex gap-2 pl-6 py-5 bg-[#BE123C1A] font-[600] text-rose border-r-4 border-rose">
-            <Image src={movieIcon} alt="movie icon" /> Movie
+          <li className="flex gap-2 pl-6 py-5 items-center bg-[#BE123C1A] font-[600] text-rose border-r-4 border-rose">
+            <Image src={movieIcon} alt="movie icon" /> <p>Movie</p>
           </li>
-          <li className="flex gap-2 pl-6 py-5">
-            <Image src={seriesIcon} alt="series icon" /> TV Series
+          <li className="flex gap-2 pl-6 py-5 items-center">
+            <Image src={seriesIcon} alt="series icon" /> <p>TV Series</p>
           </li>
-          <li className="flex gap-2 pl-6 py-5">
-            <Image src={calendarIcon} alt="calendar icon" /> Upcoming
+          <li className="flex gap-2 pl-6 py-5 items-center">
+            <Image src={calendarIcon} alt="calendar icon" /> <p>Upcoming</p>
           </li>
         </ul>
 
-        <div className="pt-8 pb-4 px-1 text-sm mr-4 border border-[#BE123CB2] rounded-xl bg-[#be123d1d]">
+        <div className="my-4 flex flex-col items-center gap-2 pt-8 pb-4 px-2 text-sm mr-4 border border-[#BE123CB2] rounded-xl bg-[#be123d1d]">
           <p className="font-[600]">Play movie quizes and earn free tickets</p>
-          <p>50k people are playing now</p>
-          <button className="font-[500] text-rose rounded-full">
+          <p className="text-xs">50k people are playing now</p>
+          <button className="px-4 py-2 font-[500] text-rose text-xs rounded-full bg-[#BE123C33]">
             Start playing
           </button>
         </div>

@@ -19,3 +19,8 @@ export type Genre = {
   id: number;
   name: string;
 };
+
+export type Trailer = {
+  key: string;
+  type: string;
+};
