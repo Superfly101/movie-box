@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={dm_sans.className}>
+      <body className={`${dm_sans.className} relative`}>
         {children}
         <footer></footer>
       </body>

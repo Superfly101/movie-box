@@ -14,7 +14,7 @@ const MainHeader = () => {
   };
 
   return (
-    <header className="z-10 w-full absolute top-0 py-2 px-4 md:px-12 lg:px-16">
+    <header className="z-10 w-full sticky top-0 py-2 px-4 md:px-12 lg:px-16">
       <nav className="py-1 flex items-center justify-between">
         <div className="flex gap-4 items-center">
           <Image src={logo} alt="Movie box logo" />

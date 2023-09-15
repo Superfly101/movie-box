@@ -36,7 +36,7 @@ const TopRatedMovies = () => {
     getTopRatedMovies();
   }, []);
   return (
-    <section className="py-8 px-4 md:px-12 lg:px-16">
+    <section className="-mt-8 pb-8 px-4 md:px-12 lg:px-16">
       <div className="flex justify-between items-center">
         <h2 className="font-bold text-2xl my-4">Featured Movie</h2>
         <div className="flex gap-1 items-center cursor-pointer">
