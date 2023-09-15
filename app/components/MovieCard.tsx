@@ -19,7 +19,6 @@ const MovieCard = ({
   genres,
 }: Movie) => {
   const router = useRouter();
-  console.log(genres);
 
   const handleClick = () => {
     router.push(`/movies/${id}`);

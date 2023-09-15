@@ -5,6 +5,7 @@ import logo from "/public/logo.svg";
 import searchIcon from "../icons/search.png";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type HeaderProps = {
   isHack?: boolean;
@@ -12,9 +13,23 @@ type HeaderProps = {
 
 const MainHeader = ({ isHack }: HeaderProps) => {
   const [isActive, setIsActive] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsActive((prev) => !prev);
+  };
+
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (searchValue === "") {
+      return;
+    }
+
+    const search = encodeURIComponent(searchValue);
+    router.push(`/search?query=${search}`);
   };
 
   return (
@@ -24,21 +39,25 @@ const MainHeader = ({ isHack }: HeaderProps) => {
       } md:px-12 lg:px-16`}
     >
       <nav className="py-1 flex items-center justify-between">
-        <div className="flex gap-4 items-center">
+        <Link href="/" className="flex gap-4 items-center">
           <Image src={logo} alt="Movie box logo" />
           <p className="font-bold text-white">MovieBox</p>
-        </div>
+        </Link>
         <div className="hidden w-5/12 relative md:block">
-          <input
-            type="text"
-            className="w-full text-sm bg-transparent border-2 py-1 px-2 border-[#D1D5DB] rounded-md outline-none placeholder:text-white"
-            placeholder="What do you want to watch?"
-          />
-          <Image
-            src={searchIcon}
-            alt="search icon"
-            className="absolute top-2 right-2"
-          />
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              className="w-full text-sm bg-transparent border-2 py-1 px-2 border-[#D1D5DB] rounded-md outline-none placeholder:text-white"
+              placeholder="What do you want to watch?"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+            <Image
+              src={searchIcon}
+              alt="search icon"
+              className="absolute top-2 right-2"
+            />
+          </form>
         </div>
         <div className="flex items-center gap-8">
           <Link href="" className="hidden text-white font-bold md:block">
@@ -63,16 +82,20 @@ const MainHeader = ({ isHack }: HeaderProps) => {
         </Link>
         <hr />
         <div className="relative">
-          <input
-            type="text"
-            className="w-full text-sm bg-transparent border-2 py-1 px-2 border-[#D1D5DB] rounded-md outline-none placeholder:text-white"
-            placeholder="What do you want to watch?"
-          />
-          <Image
-            src={searchIcon}
-            alt="search icon"
-            className="absolute top-2 right-2"
-          />
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              className="w-full text-sm bg-transparent border-2 py-1 px-2 border-[#D1D5DB] rounded-md outline-none placeholder:text-white"
+              placeholder="What do you want to watch?"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+            <Image
+              src={searchIcon}
+              alt="search icon"
+              className="absolute top-2 right-2"
+            />
+          </form>
         </div>
       </nav>
     </header>

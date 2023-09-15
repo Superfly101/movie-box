@@ -43,7 +43,7 @@ export default function Page() {
     <>
       <MainHeader isHack={true} />
       <section className="py-8 px-4 md:px-12 lg:px-16">
-        <h2 className="text-xl font-bold">Your Search Results</h2>
+        <h2 className="text-xl font-bold">Your Search Results for: {query}</h2>
         {isLoading ? (
           <Spinner text="Searching..." />
         ) : (
