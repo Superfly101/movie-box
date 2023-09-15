@@ -39,7 +39,7 @@ const Trailer = ({ id }: TrailerProps) => {
     };
 
     getTrailer();
-  }, []);
+  }, [id]);
   return isLoading ? (
     <Spinner text="Getting trailer" />
   ) : (
