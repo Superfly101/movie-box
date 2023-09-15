@@ -48,7 +48,7 @@ const TopRatedMovies = () => {
         <Spinner />
       ) : (
         <ul className="movie-list">
-          {topRatedMovies.map((movie, index) => (
+          {topRatedMovies.map((movie) => (
             <MovieCard key={movie.id.toString()} {...movie} />
           ))}
         </ul>

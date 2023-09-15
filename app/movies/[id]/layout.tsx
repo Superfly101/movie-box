@@ -6,6 +6,7 @@ import seriesIcon from "../../icons/tvshow-icon.png";
 import calendarIcon from "../../icons/calendar-icon.png";
 import logoutIcon from "../../icons/logout-icon.png";
 import { Poppins } from "next/font/google";
+import Link from "next/link";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -20,22 +21,27 @@ export default function MovieLayout({
   return (
     <section className={`flex ${poppins.className}`}>
       <nav className="py-12 pl-4 min-h-screen min-w-[12rem] border border-[#0000004D] rounded-tr-[3rem] rounded-br-[3rem] text-sm">
-        <div className="flex gap-4 items-center">
+        <Link href="/" className="flex gap-4 items-center">
           <Image src={logo} alt="Movie box logo" />
           <p className="font-bold text-lg">MovieBox</p>
-        </div>
+        </Link>
         <ul className="flex flex-col pt-8 gap-4">
-          <li className="flex gap-2 pl-6 py-5 items-center">
-            <Image src={homeIcon} alt="home icon" />
-            <p>Home</p>
+          <li>
+            <Link
+              href="/"
+              className="flex gap-2 pl-6 py-5 items-center cursor-pointer"
+            >
+              <Image src={homeIcon} alt="home icon" />
+              <p>Home</p>
+            </Link>
           </li>
-          <li className="flex gap-2 pl-6 py-5 items-center bg-[#BE123C1A] font-[600] text-rose border-r-4 border-rose">
+          <li className="flex gap-2 pl-6 py-5 items-center cursor-pointer bg-[#BE123C1A] font-[600] text-rose border-r-4 border-rose">
             <Image src={movieIcon} alt="movie icon" /> <p>Movie</p>
           </li>
-          <li className="flex gap-2 pl-6 py-5 items-center">
+          <li className="flex gap-2 pl-6 py-5 items-center cursor-pointer">
             <Image src={seriesIcon} alt="series icon" /> <p>TV Series</p>
           </li>
-          <li className="flex gap-2 pl-6 py-5 items-center">
+          <li className="flex gap-2 pl-6 py-5 items-center cursor-pointer">
             <Image src={calendarIcon} alt="calendar icon" /> <p>Upcoming</p>
           </li>
         </ul>
