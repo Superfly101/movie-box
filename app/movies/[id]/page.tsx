@@ -35,10 +35,17 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Trailer id={params.id} />
       <article className="flex py-4 flex-col gap-2">
         <div className="flex items-justify justify-between gap-4 my-2">
-          <div className="flex gap-4">
-            <h2 className="text-xl">
-              {data.original_title} &#183; {data.release_date.slice(0, 4)}{" "}
-              &#183; {runtime}
+          <div className="flex gap-4 items-center">
+            <h2 data-testid="movie-title" className="text-xl">
+              {data.original_title}
+            </h2>
+            <span className="text-3xl">&#183;</span>
+            <h2 data-testid="movie-release-date" className="text-xl">
+              {data.release_date.slice(0, 4)}
+            </h2>
+            <span className="text-3xl">&#183;</span>
+            <h2 data-testid="movie-runtime" className="text-xl">
+              {runtime}
             </h2>
             <ul className="flex gap-2 items-center">
               {data.genres.map((genre) => (
@@ -56,7 +63,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             {data.vote_average.toFixed(1)} | {formatNumber(data.vote_count)}
           </div>
         </div>
-        <p>{data.overview}</p>
+        <p data-testid="movie-overview">{data.overview}</p>
         <p>
           Director:{" "}
           <span className="text-rose cursor-pointer hover:underline">

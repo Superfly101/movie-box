@@ -16,7 +16,6 @@ const MovieCard = ({
   poster_path,
   original_title,
   release_date,
-  genres,
 }: Movie) => {
   const router = useRouter();
 
@@ -24,18 +23,25 @@ const MovieCard = ({
     router.push(`/movies/${id}`);
   };
   return (
-    <li>
+    <li data-testid="movie-card">
       <div className="cursor-pointer" onClick={handleClick}>
         <Image
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt="Movie poster"
           width={500}
           height={700}
+          data-testid="movie-poster"
         />
       </div>
       <div className="py-2 flex flex-col gap-2 mt-2">
-        <p className="text-sm">{release_date}</p>
-        <h4 className="font-bold cursor-pointer" onClick={handleClick}>
+        <p data-testid="movie-release-date" className="text-sm">
+          {release_date}
+        </p>
+        <h4
+          data-testid="movie-title"
+          className="font-bold cursor-pointer"
+          onClick={handleClick}
+        >
           {original_title}
         </h4>
       </div>
