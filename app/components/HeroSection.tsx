@@ -25,7 +25,7 @@ const HeroSection = async () => {
 
   return (
     <section
-      className="relative -top-20 min-h-[calc(100vh-40px)] bg-cover flex items-center px-4 md:px-12 lg:px-16"
+      className="min-h-[calc(100vh-40px)] bg-cover flex items-center px-4 md:px-12 lg:px-16"
       style={{
         backgroundImage: `url("${imageUrl}/${data.backdrop_path}")`,
       }}

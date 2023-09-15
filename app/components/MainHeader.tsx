@@ -6,7 +6,11 @@ import searchIcon from "../icons/search.png";
 import Link from "next/link";
 import { useState } from "react";
 
-const MainHeader = () => {
+type HeaderProps = {
+  isHack?: boolean;
+};
+
+const MainHeader = ({ isHack }: HeaderProps) => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
@@ -14,7 +18,11 @@ const MainHeader = () => {
   };
 
   return (
-    <header className="z-10 w-full sticky top-0 py-2 px-4 md:px-12 lg:px-16">
+    <header
+      className={`z-10 w-full top-0 py-2 px-4 ${
+        isHack ? `bg-rose` : "absolute"
+      } md:px-12 lg:px-16`}
+    >
       <nav className="py-1 flex items-center justify-between">
         <div className="flex gap-4 items-center">
           <Image src={logo} alt="Movie box logo" />
