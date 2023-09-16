@@ -7,7 +7,8 @@ import Link from "next/link";
 
 async function getData() {
   const res = await fetch(
-    `${URL}/popular?language=en-US&page=1&api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+    `${URL}/popular?language=en-US&page=1&api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+    { cache: "no-store" }
   );
 
   if (!res.ok) {

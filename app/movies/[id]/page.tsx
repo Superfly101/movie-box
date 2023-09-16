@@ -6,7 +6,8 @@ import Trailer from "@/app/components/Trailer";
 
 async function getData(id: string) {
   const res = await fetch(
-    `${URL}/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+    `${URL}/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+    { cache: "no-store" }
   );
 
   if (!res.ok) {
